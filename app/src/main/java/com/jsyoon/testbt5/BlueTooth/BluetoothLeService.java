@@ -86,6 +86,9 @@ public class BluetoothLeService extends Service {
                 Log.i(TAG, "Disconnected from GATT server.");
                 broadcastUpdate(intentAction);
             }
+            else{
+                Log.i(TAG, "Unknown State.");
+            }
         }
 
         @Override
@@ -363,5 +366,16 @@ public class BluetoothLeService extends Service {
         if (mBluetoothGatt == null) return null;
 
         return mBluetoothGatt.getServices();
+    }
+
+    @Override
+    public void onCreate() {
+        Log.i(TAG, "onCreate");
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.i(TAG, "Received start id " + startId + ": " + intent);
+        return START_NOT_STICKY;
     }
 }

@@ -1,22 +1,46 @@
 package com.jsyoon.testbt5;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
+import com.jsyoon.testbt5.BlueTooth.BLEControl;
+import com.jsyoon.testbt5.BlueTooth.BluetoothLeService;
+import com.jsyoon.testbt5.BlueTooth.DataInterface;
 import com.jsyoon.testbt5.BlueTooth.DeviceScanActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DataInterface {
 
+    private final static String TAG = MainActivity.class.getSimpleName();
     private String mDeviceName;
     private String mDeviceAddress;
+    BLEControl bleControl;
+
+    private TextView mDeviceAddressText;
+    private TextView mConnectionState;
+    private TextView mDataField;
+
+    private ToggleButton RtogB, GtogB, BtogB, MtogB;
+
+    private Button mode_run;
+    private Spinner mode_spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mDeviceAddressText = (TextView) findViewById(R.id.device_address);
+        mDataField = (TextView) findViewById(R.id.data_value);
+        mConnectionState = (TextView) findViewById(R.id.connection_state);
+
+        initialToggleButton();
     }
 
     @Override
@@ -42,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.menu_search) {
             final Intent intent = new Intent(this, DeviceScanActivity.class);
-            startActivityForResult(intent,Const.REQUEST_SCAN_BT);
+            startActivityForResult(intent, Const.REQUEST_SCAN_BT);
             return true;
         }
 
@@ -52,12 +82,96 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == Const.REQUEST_SCAN_BT && resultCode == Activity.RESULT_OK) {
+
             mDeviceName = data.getStringExtra(Const.EXTRAS_DEVICE_NAME);
             mDeviceAddress = data.getStringExtra(Const.EXTRAS_DEVICE_ADDRESS);
 
-            return;
+            mDeviceAddressText.setText(mDeviceAddress);
+
+            bleControl = new BLEControl(this, mDeviceName, mDeviceAddress);
+
+            Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
+            bindService(gattServiceIntent, bleControl.mServiceConnection, BIND_AUTO_CREATE);
+
+            registerReceiver(bleControl.mGattUpdateReceiver, bleControl.makeGattUpdateIntentFilter());
+
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public void displayData(String data) {
+        if (data != null) {
+            mDataField.setText(data);
+        }
+    }
+
+    @Override
+    public void connectionState(final int resourceId) {
+        mConnectionState.setText(resourceId);
+    }
+
+    private void initialToggleButton(){
+        MtogB = (ToggleButton) findViewById(R.id.MusictoggleButton);
+        RtogB = (ToggleButton) findViewById(R.id.RedLedtoggleButton);
+        GtogB = (ToggleButton) findViewById(R.id.GreenLedtoggleButton);
+        BtogB = (ToggleButton) findViewById(R.id.BlueLedtoggleButton);
+
+        // Set a checked change listener for toggle button
+        MtogB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    bleControl.writeData(Const.musicOnCmd);
+                    // if toggle button is enabled/on
+                    //MtogB.setBackgroundColor(Color.parseColor("#FF63D486"));
+                }
+                else{
+                    bleControl.writeData(Const.musicOffCmd);
+                    // If toggle button is disabled/off
+                    //MtogB.setBackgroundColor(Color.parseColor("#FFD4558C"));
+                }
+            }
+        });
+
+        // Set a checked change listener for toggle button
+        MtogB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    bleControl.writeData(Const.musicOnCmd);
+                    // if toggle button is enabled/on
+                    //MtogB.setBackgroundColor(Color.parseColor("#FF63D486"));
+                }
+                else{
+                    bleControl.writeData(Const.musicOffCmd);
+                    // If toggle button is disabled/off
+                    //MtogB.setBackgroundColor(Color.parseColor("#FFD4558C"));
+                }
+            }
+        });
+
+        mode_spinner = (Spinner) findViewById(R.id.modespinner);
+        mode_run = (Button) findViewById(R.id.btn_run);
+        mode_run.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                byte[] value = Const.modecommand;
+
+                if ("대기모드".equals(String.valueOf(mode_spinner.getSelectedItem()))) {
+                    value[3] = (byte) 0x01;
+                    bleControl.writeData(value);
+                } else if ("데모모드".equals(String.valueOf(mode_spinner.getSelectedItem()))) {
+                    value[3] = (byte) 0x04;
+                    bleControl.writeData(value);
+                }
+            }
+        });
+
+        // Initially off the third toggle button
+        RtogB.setChecked(false);
+        GtogB.setChecked(false);
+        BtogB.setChecked(false);
+        MtogB.setChecked(false);
+    }
 }

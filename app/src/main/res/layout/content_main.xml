@@ -50,12 +50,14 @@
             android:layout_height="match_parent"
             android:text="음악 재생 제어" />
 
+        <!-- android:background="@drawable/togglebtncolor" -->
         <ToggleButton
-            android:id="@+id/musictoggleButton"
+            android:id="@+id/MusictoggleButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="ToggleButton" />
+            android:textOn="Music Play ON"
+            android:textOff="Music Play OFF"/>
     </LinearLayout>
 
     <LinearLayout
@@ -74,32 +76,27 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textOn="RED ON"
-            android:textOff="RED OFF"/>
-
-        <Space
-            android:layout_width="5dp"
-            android:layout_height="wrap_content" />
+            android:textSize="12sp"
+            android:textOn="Red ON"
+            android:textOff="Red OFF"/>
 
         <ToggleButton
             android:id="@+id/GreenLedtoggleButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textOn="GREEN ON"
-            android:textOff="GREEN OFF"/>
-
-        <Space
-            android:layout_width="5dp"
-            android:layout_height="wrap_content" />
+            android:textSize="12sp"
+            android:textOn="Green ON"
+            android:textOff="Green OFF"/>
 
         <ToggleButton
             android:id="@+id/BlueLedtoggleButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textOn="BLUE ON"
-            android:textOff="BLUE OFF"/>
+            android:textSize="12sp"
+            android:textOn="Blue ON"
+            android:textOff="Blue OFF"/>
     </LinearLayout>
 
     <LinearLayout

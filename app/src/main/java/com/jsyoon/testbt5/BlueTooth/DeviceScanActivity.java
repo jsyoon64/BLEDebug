@@ -17,6 +17,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -142,7 +143,10 @@ public class DeviceScanActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         final BluetoothDevice device = mLeDeviceListAdapter.getDevice(position);
-        if (device == null) return;
+        if (device == null) {
+            setResult(RESULT_CANCELED, null);
+            finish();
+        }
         final Intent intent = new Intent();
         intent.putExtra(Const.EXTRAS_DEVICE_NAME, device.getName());
         intent.putExtra(Const.EXTRAS_DEVICE_ADDRESS, device.getAddress());
@@ -151,6 +155,7 @@ public class DeviceScanActivity extends ListActivity {
             mScanning = false;
         }
         setResult(RESULT_OK, intent);
+        finish();
     }
 
     private void scanLeDevice(final boolean enable) {
@@ -161,7 +166,7 @@ public class DeviceScanActivity extends ListActivity {
                 public void run() {
                     mScanning = false;
                     mLEScanner.stopScan(mLeScanCallback);
-                    invalidateOptionsMenu();
+                    //invalidateOptionsMenu();
                 }
             }, SCAN_PERIOD);
 
@@ -171,7 +176,7 @@ public class DeviceScanActivity extends ListActivity {
             mScanning = false;
             mLEScanner.stopScan(mLeScanCallback);
         }
-        invalidateOptionsMenu();
+        //invalidateOptionsMenu();
     }
 
     // Device scan callback.

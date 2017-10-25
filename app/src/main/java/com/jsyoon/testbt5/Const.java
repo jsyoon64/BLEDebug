@@ -21,4 +21,9 @@ public class Const {
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
 
     public static final SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm:ss.SSS");
+
+    public static final byte[] musicOffCmd = new byte[]{(byte) 0xFF, (byte) 0xFE, (byte) 0xC4, (byte) 0x00, (byte) 0x01};
+    public static final byte[] musicOnCmd = new byte[]{(byte) 0xFF, (byte) 0xFE, (byte) 0xC4, (byte) 0x01, (byte) 0x01};
+
+    public static final byte[] modecommand = new byte[]{(byte) 0xFF, (byte) 0xFE, (byte) 0xCB, (byte) 0x00, (byte) 0x00};
 }

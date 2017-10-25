@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="mode_arrays">
+        <item>대기모드</item>
+        <item>준비모드</item>
+        <item>시작모드</item>
+        <item>데모모드</item>
+    </array>
+</resources>

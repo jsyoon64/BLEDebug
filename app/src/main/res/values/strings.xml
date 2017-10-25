@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">testbt5</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Device Control Activity string -->
+    <string name="label_data">Data:</string>
+    <string name="label_device_address">Device address:</string>
+    <string name="label_state">State:</string>
+    <string name="no_data">No data</string>
+    <string name="mode_prompt">Choose a mode</string>
+
+    <!-- Menu items -->
+    <string name="menu_connect">Connect</string>
+    <string name="menu_disconnect">Disconnect</string>
+    <string name="menu_scan">Scan</string>
+    <string name="menu_stop">Stop</string>
+
+    <!-- subtitle string -->
+    <string name="msg_not_connected">not connected</string>
+    <string name="msg_connecting">connecting…</string>
+    <string name="msg_connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+
+    <!-- bluetooth string -->
+
+    <string name="no_bt_support">Your device doesn\'t support bluetooth.</string>
+    <string name="empty_device_name">&lt;New device&gt;</string>
+    <string name="title_activity_device_scan">DeviceScanActivity</string>
+</resources>

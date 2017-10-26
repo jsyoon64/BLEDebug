@@ -36,6 +36,9 @@ public class Const {
     public  static final byte REDLedCtr = (byte)0xA0;
     public  static final byte GREENLedCtr = (byte)0xB0;
     public  static final byte BLUELedCtr = (byte)0xC0;
+    public  static final byte MP3StopCtr = (byte)0x00;
+    public  static final byte MP3PauseCtr = (byte)0x01;
+    public  static final byte MP3PlayCtr = (byte)0x02;
 
     /* Command Field : CommandFormat[2]*/
     public static final byte musicCommand =(byte) 0xC4;

@@ -181,7 +181,7 @@ public class BluetoothLeService extends Service {
 
             // Send Binary data
             final Intent binaryintent = new Intent(BINARY_DATA_AVAILABLE);
-            intent.putExtra(EXTRA_DATA, data);
+            binaryintent.putExtra(EXTRA_DATA, data);
             sendBroadcast(binaryintent);
         }
     }

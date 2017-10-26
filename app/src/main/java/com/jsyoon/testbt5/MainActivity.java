@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
 
     @Override
     public void processBinaryData(byte[] data) {
-        if ((data[0] == 0xFF) && (data[1] == 0xFE)) {
+        if ((data[0] == (byte)0xFF) && (data[1] == (byte)0xFE)) {
 
         }
     }
@@ -131,11 +131,11 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
                 byte[] value = Const.CommandFormat;
                 value[Const.CmdField] = Const.musicCommand;
                 if (isChecked) {
-                    value[Const.DataField] = Const.OnData;
+                    value[Const.DataField] = Const.MP3PlayCtr;
                     // if toggle button is enabled/on
                     //MtogB.setBackgroundColor(Color.parseColor("#FF63D486"));
                 } else {
-                    value[Const.DataField] = Const.OffData;
+                    value[Const.DataField] = Const.MP3StopCtr;
                     // If toggle button is disabled/off
                     //MtogB.setBackgroundColor(Color.parseColor("#FFD4558C"));
                 }

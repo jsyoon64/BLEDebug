@@ -22,8 +22,26 @@ public class Const {
 
     public static final SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm:ss.SSS");
 
-    public static final byte[] musicOffCmd = new byte[]{(byte) 0xFF, (byte) 0xFE, (byte) 0xC4, (byte) 0x00, (byte) 0x01};
-    public static final byte[] musicOnCmd = new byte[]{(byte) 0xFF, (byte) 0xFE, (byte) 0xC4, (byte) 0x01, (byte) 0x01};
+    public static final int CmdField = 2;
+    public static final int DataField = 3;
+    public static final byte[] CommandFormat = new byte[]{(byte) 0xFF, (byte) 0xFE, (byte) 0x00, (byte) 0x00};
 
-    public static final byte[] modecommand = new byte[]{(byte) 0xFF, (byte) 0xFE, (byte) 0xCB, (byte) 0x00, (byte) 0x00};
+    /* Data Field : CommandFormat[3]*/
+    public  static final byte OffData = (byte)0x00;
+    public  static final byte OnData = (byte)0x01;
+    public  static final byte Idlemode = (byte)0x01;
+    public  static final byte Standbymode = (byte)0x02;
+    public  static final byte Startmode = (byte)0x03;
+    public  static final byte Demomode = (byte)0x04;
+    public  static final byte REDLedCtr = (byte)0xA0;
+    public  static final byte GREENLedCtr = (byte)0xB0;
+    public  static final byte BLUELedCtr = (byte)0xC0;
+
+    /* Command Field : CommandFormat[2]*/
+    public static final byte musicCommand =(byte) 0xC4;
+    public static final byte modeCommand =(byte) 0xCB;
+    public static final byte ledCommand =(byte) 0xC9;
+    public static final byte RLEDPWMCommand =(byte) 0xC5;
+    public static final byte GLEDPWMCommand =(byte) 0xC6;
+    public static final byte BLEDPWMCommand =(byte) 0xC7;
 }

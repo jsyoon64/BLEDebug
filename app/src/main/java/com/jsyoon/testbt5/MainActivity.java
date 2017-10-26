@@ -100,6 +100,13 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
     }
 
     @Override
+    public void processBinaryData(byte[] data) {
+        if ((data[0] == 0xFF) && (data[1] == 0xFE)) {
+
+        }
+    }
+
+    @Override
     public void displayData(String data) {
         if (data != null) {
             mDataField.setText(data);
@@ -111,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
         mConnectionState.setText(resourceId);
     }
 
-    private void initialToggleButton(){
+    private void initialToggleButton() {
         MtogB = (ToggleButton) findViewById(R.id.MusictoggleButton);
         RtogB = (ToggleButton) findViewById(R.id.RedLedtoggleButton);
         GtogB = (ToggleButton) findViewById(R.id.GreenLedtoggleButton);
@@ -121,33 +128,63 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
         MtogB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    bleControl.writeData(Const.musicOnCmd);
+                byte[] value = Const.CommandFormat;
+                value[Const.CmdField] = Const.musicCommand;
+                if (isChecked) {
+                    value[Const.DataField] = Const.OnData;
                     // if toggle button is enabled/on
                     //MtogB.setBackgroundColor(Color.parseColor("#FF63D486"));
-                }
-                else{
-                    bleControl.writeData(Const.musicOffCmd);
+                } else {
+                    value[Const.DataField] = Const.OffData;
                     // If toggle button is disabled/off
                     //MtogB.setBackgroundColor(Color.parseColor("#FFD4558C"));
                 }
+                if (bleControl != null) bleControl.writeData(value);
             }
         });
 
         // Set a checked change listener for toggle button
-        MtogB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        RtogB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    bleControl.writeData(Const.musicOnCmd);
-                    // if toggle button is enabled/on
-                    //MtogB.setBackgroundColor(Color.parseColor("#FF63D486"));
+                byte[] value = Const.CommandFormat;
+                value[Const.CmdField] = Const.ledCommand;
+                if (isChecked) {
+                    value[Const.DataField] = Const.OnData | Const.REDLedCtr;
+                } else {
+                    value[Const.DataField] = Const.OffData | Const.REDLedCtr;
                 }
-                else{
-                    bleControl.writeData(Const.musicOffCmd);
-                    // If toggle button is disabled/off
-                    //MtogB.setBackgroundColor(Color.parseColor("#FFD4558C"));
+                if (bleControl != null) bleControl.writeData(value);
+            }
+        });
+
+        // Set a checked change listener for toggle button
+        GtogB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                byte[] value = Const.CommandFormat;
+                value[Const.CmdField] = Const.ledCommand;
+                if (isChecked) {
+                    value[Const.DataField] = Const.OnData | Const.GREENLedCtr;
+                } else {
+                    value[Const.DataField] = Const.OffData | Const.GREENLedCtr;
                 }
+                if (bleControl != null) bleControl.writeData(value);
+            }
+        });
+
+        // Set a checked change listener for toggle button
+        BtogB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                byte[] value = Const.CommandFormat;
+                value[Const.CmdField] = Const.ledCommand;
+                if (isChecked) {
+                    value[Const.DataField] = Const.OnData | Const.BLUELedCtr;
+                } else {
+                    value[Const.DataField] = Const.OffData | Const.BLUELedCtr;
+                }
+                if (bleControl != null) bleControl.writeData(value);
             }
         });
 
@@ -156,14 +193,14 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
         mode_run.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                byte[] value = Const.modecommand;
-
+                byte[] value = Const.CommandFormat;
+                value[Const.CmdField] = Const.modeCommand;
                 if ("대기모드".equals(String.valueOf(mode_spinner.getSelectedItem()))) {
-                    value[3] = (byte) 0x01;
-                    bleControl.writeData(value);
+                    value[Const.DataField] = Const.Idlemode;
+                    if (bleControl != null) bleControl.writeData(value);
                 } else if ("데모모드".equals(String.valueOf(mode_spinner.getSelectedItem()))) {
-                    value[3] = (byte) 0x04;
-                    bleControl.writeData(value);
+                    value[Const.DataField] = Const.Demomode;
+                    if (bleControl != null) bleControl.writeData(value);
                 }
             }
         });

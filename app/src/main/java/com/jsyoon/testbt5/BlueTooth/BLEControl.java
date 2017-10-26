@@ -81,6 +81,8 @@ public class BLEControl{
                 selectSleepSenseServices(mBluetoothLeService.getSupportedGattServices());
             } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
                 _iDataHandler.displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
+            } else if (BluetoothLeService.BINARY_DATA_AVAILABLE.equals(action)) {
+                _iDataHandler.processBinaryData(intent.getByteArrayExtra(BluetoothLeService.EXTRA_DATA));
             }
         }
     };
@@ -133,7 +135,7 @@ public class BLEControl{
     }
 
     public void writeData(byte[] value) {
-        if (mWriteCharacteristic != null) {
+        if( (mWriteCharacteristic != null) && (mBluetoothLeService != null) ){
             mBluetoothLeService.writeCharacteristic(mWriteCharacteristic,value);
             //characteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE);
         }

@@ -53,11 +53,13 @@
         <!-- android:background="@drawable/togglebtncolor" -->
         <ToggleButton
             android:id="@+id/MusictoggleButton"
-            style="@style/Widget.AppCompat.Button.Colored"
+            style="@drawable/styleselecter1"
+            android:textColor="@drawable/toggle_text_color"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textOn="Music Play ON"
-            android:textOff="Music Play OFF"/>
+            android:textOff="Music Play OFF" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -73,7 +75,8 @@
 
         <ToggleButton
             android:id="@+id/RedLedtoggleButton"
-            style="@style/Widget.AppCompat.Button.Colored"
+            style="@drawable/styleselecter1"
+            android:textColor="@drawable/toggle_text_color"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="12sp"
@@ -82,7 +85,8 @@
 
         <ToggleButton
             android:id="@+id/GreenLedtoggleButton"
-            style="@style/Widget.AppCompat.Button.Colored"
+            style="@drawable/styleselecter1"
+            android:textColor="@drawable/toggle_text_color"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="12sp"
@@ -91,7 +95,8 @@
 
         <ToggleButton
             android:id="@+id/BlueLedtoggleButton"
-            style="@style/Widget.AppCompat.Button.Colored"
+            style="@drawable/styleselecter1"
+            android:textColor="@drawable/toggle_text_color"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="12sp"

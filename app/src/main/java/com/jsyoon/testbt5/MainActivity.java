@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -25,6 +26,9 @@ import com.jsyoon.testbt5.BlueTooth.BLEControl;
 import com.jsyoon.testbt5.BlueTooth.BluetoothLeService;
 import com.jsyoon.testbt5.BlueTooth.DataInterface;
 import com.jsyoon.testbt5.BlueTooth.DeviceScanActivity;
+import com.jsyoon.testbt5.data.Rxdata;
+import com.jsyoon.testbt5.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity implements DataInterface {
 
@@ -42,10 +46,14 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
     private Button mode_run;
     private Spinner mode_spinner;
 
+    ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -54,6 +62,9 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
         mConnectionState = (TextView) findViewById(R.id.connection_state);
 
         initialToggleButton();
+
+        Rxdata rd = new Rxdata(); // your data is created here
+        binding.setRxdata(rd); // generated setter based on the data in the layout file
     }
 
     @Override
@@ -101,8 +112,11 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
 
     @Override
     public void processBinaryData(byte[] data) {
-        if ((data[0] == (byte)0xFF) && (data[1] == (byte)0xFE)) {
-
+        Rxdata bdata = binding.getRxdata();
+        if ((data[0] == (byte) 0xFF) && (data[1] == (byte) 0xFE)) {
+            bdata.LeadOff = data[3];
+            bdata.setOpMode(data[4]);
+            bdata.Batt = data[6];
         }
     }
 

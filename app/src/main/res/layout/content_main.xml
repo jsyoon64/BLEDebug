@@ -204,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.leadoff}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -219,14 +219,14 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
                     android:text="동작모드"
-                    android:textSize="12sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/working_mode_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.opmodebyte}"
                     android:textSize="14sp" />
             </LinearLayout>
 

@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
     @Override
     public void processBinaryData(byte[] data) {
 
-        if(data!=null) {
+        if ((data != null) && (data.length > 0)) {
             if ((data[0] == (byte) 0xFF) && (data[1] == (byte) 0xFE)) {
 
                 rd.setLeadoff(data[3]);

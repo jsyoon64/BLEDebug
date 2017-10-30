@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="rxdata"  type="com.jsyoon.testbt5.data.Rxdata" />
+        <variable name="rxdata"  type="com.jsyoon.testbt5.data.rxdata" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -204,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.getHexStringbyte(rxdata.LeadOff)}"
+                    android:text="@{rxdata.getLeadoff}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -226,7 +226,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.OpMode}"
+                    android:text="@{rxdata.getOpmodebyte}"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -366,7 +366,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{String.valueOf(rxdata.PPG)}"
+                    android:text=""
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -388,7 +388,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{String.valueOf(rxdata.SpO2)}"
+                    android:text=""
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
@@ -417,7 +417,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.getEEG_A}"
+                    android:text="@{rxdata.eeg_a}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -439,7 +439,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.getEEG_B}"
+                    android:text="@{rxdata.eeg_b}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -461,7 +461,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.getEEG_D}"
+                    android:text="@{rxdata.eeg_d}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -483,7 +483,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.getEEG_T}"
+                    android:text="@{rxdata.eeg_t}"
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
@@ -512,7 +512,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{String.valueOf(rxdata.ACC_X)}"
+                    android:text="@{rxdata.acc_x}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -534,7 +534,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{String.valueOf(rxdata.ACC_Y)}"
+                    android:text="@{rxdata.acc_y}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -556,7 +556,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{String.valueOf(rxdata.ACC_Z)}"
+                    android:text="@{rxdata.acc_z}"
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>

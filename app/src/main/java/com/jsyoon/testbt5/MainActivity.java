@@ -27,7 +27,7 @@ import com.jsyoon.testbt5.BlueTooth.BLEControl;
 import com.jsyoon.testbt5.BlueTooth.BluetoothLeService;
 import com.jsyoon.testbt5.BlueTooth.DataInterface;
 import com.jsyoon.testbt5.BlueTooth.DeviceScanActivity;
-import com.jsyoon.testbt5.data.Rxdata;
+import com.jsyoon.testbt5.data.rxdata;
 import com.jsyoon.testbt5.databinding.ActivityMainBinding;
 
 
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
     private Spinner mode_spinner;
 
     ActivityMainBinding binding;
+    rxdata rd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
 
         initialToggleButton();
 
-        Rxdata rd = new Rxdata(); // your data is created here
+        rd = new rxdata(); // your data is created here
         binding.setRxdata(rd); // generated setter based on the data in the layout file
     }
 
@@ -113,11 +114,10 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
 
     @Override
     public void processBinaryData(byte[] data) {
-        Rxdata bdata = binding.getRxdata();
+
         if ((data[0] == (byte) 0xFF) && (data[1] == (byte) 0xFE)) {
-            bdata.LeadOff.set(data[3]);
-            bdata.setOpMode(data[4]);
-            bdata.Batt.set(data[6]);
+            rd.setLeadoff(data[3]);
+            rd.setOpmodebyte(data[4]);
         }
     }
 

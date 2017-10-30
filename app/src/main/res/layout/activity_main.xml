@@ -2,7 +2,7 @@
 <layout>
 
     <data>
-        <variable name="rxdata" type="com.jsyoon.testbt5.data.Rxdata" />
+        <variable name="rxdata" type="com.jsyoon.testbt5.data.rxdata" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"

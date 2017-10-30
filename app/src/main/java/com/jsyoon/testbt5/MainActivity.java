@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
 
         rd = new rxdata(); // your data is created here
         binding.setRxdata(rd); // generated setter based on the data in the layout file
+        binding.contents.setRxdata(rd);
     }
 
     @Override
@@ -115,9 +116,12 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
     @Override
     public void processBinaryData(byte[] data) {
 
-        if ((data[0] == (byte) 0xFF) && (data[1] == (byte) 0xFE)) {
-            rd.setLeadoff(data[3]);
-            rd.setOpmodebyte(data[4]);
+        if(data!=null) {
+            if ((data[0] == (byte) 0xFF) && (data[1] == (byte) 0xFE)) {
+
+                rd.setLeadoff(data[3]);
+                rd.setOpmodebyte(data[4]);
+            }
         }
     }
 

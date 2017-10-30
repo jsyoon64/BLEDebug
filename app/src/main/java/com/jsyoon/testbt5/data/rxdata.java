@@ -32,7 +32,14 @@ public class rxdata extends BaseObservable {
 */
     private byte leadoff;
     private byte opmodebyte;
-
+    private String opmode;
+    private byte batt;
+    private byte temp;
+    private byte abl;
+    private byte eda;
+    private byte mic;
+    private int ppg;
+    private int spo2;
     private float eeg_a;
     private float eeg_b;
     private float eeg_d;
@@ -40,29 +47,6 @@ public class rxdata extends BaseObservable {
     private int acc_x;
     private int acc_y;
     private int acc_z;
-
-    /*
-    public void setOpMode(byte mode) {
-        this.OpModebyte.set(mode);
-        switch (mode) {
-            case Const.Idlemode:
-                OpMode.set("대기모드");
-                break;
-            case Const.Standbymode:
-                OpMode.set("준비모드");
-                break;
-            case Const.Startmode:
-                OpMode.set("시작모드");
-                break;
-            case Const.Demomode:
-                OpMode.set("데모모드");
-                break;
-            default:
-                OpMode.set("그외모드");
-                break;
-        }
-    }
-*/
 
     @Bindable
     public String getLeadoff() {
@@ -84,6 +68,89 @@ public class rxdata extends BaseObservable {
     public void setOpmodebyte(byte val) {
         opmodebyte = val;
         notifyPropertyChanged(BR.opmodebyte);
+        setOpmodeString(val);
+    }
+
+    @Bindable
+    public String getOpmode() {
+        return opmode.toString();
+    }
+    public void setOpmode(String val) {
+        opmode = val;
+        notifyPropertyChanged(BR.opmode);
+    }
+
+    @Bindable
+    public String getTemp() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%02X ", temp));
+        return sb.toString();
+    }
+    public void setTemp(byte val) {
+        temp = val;
+        notifyPropertyChanged(BR.temp);
+    }
+
+    @Bindable
+    public String getBatt() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%02X ", batt));
+        return sb.toString();
+    }
+    public void setBatt(byte val) {
+        batt = val;
+        notifyPropertyChanged(BR.batt);
+    }
+
+    @Bindable
+    public String getAbl() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%02X ", abl));
+        return sb.toString();
+    }
+    public void setAbl(byte val) {
+        abl = val;
+        notifyPropertyChanged(BR.abl);
+    }
+
+    @Bindable
+    public String getEda() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%02X ", eda));
+        return sb.toString();
+    }
+    public void setEda(byte val) {
+        eda = val;
+        notifyPropertyChanged(BR.eda);
+    }
+
+    @Bindable
+    public String getMic() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%02X ", mic));
+        return sb.toString();
+    }
+    public void setMic(byte val) {
+        mic = val;
+        notifyPropertyChanged(BR.mic);
+    }
+
+    @Bindable
+    public String getPpg() {
+        return String.valueOf(ppg);
+    }
+    public void setPpg(int val) {
+        ppg = val;
+        notifyPropertyChanged(BR.ppg);
+    }
+
+    @Bindable
+    public String getSpo2() {
+        return String.valueOf(spo2);
+    }
+    public void setSpo2(int val) {
+        spo2 = val;
+        notifyPropertyChanged(BR.spo2);
     }
 
     @Bindable
@@ -155,4 +222,25 @@ public class rxdata extends BaseObservable {
         sb.append(String.format("%02X ", data));
         return sb.toString();
     }
+
+    private void setOpmodeString(byte mode) {
+        switch (mode) {
+            case Const.Idlemode:
+                setOpmode("대기");
+                break;
+            case Const.Standbymode:
+                setOpmode("준비");
+                break;
+            case Const.Startmode:
+                setOpmode("시작");
+                break;
+            case Const.Demomode:
+                setOpmode("데모");
+                break;
+            default:
+                setOpmode("그외");
+                break;
+        }
+    }
+
 }

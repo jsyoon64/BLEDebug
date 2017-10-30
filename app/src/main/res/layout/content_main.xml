@@ -204,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.getHexStringbyte(rxdata.LeadOff)}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -226,7 +226,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.getOpMode}"
+                    android:text="@{rxdata.OpMode}"
                     android:textSize="14sp" />
             </LinearLayout>
 

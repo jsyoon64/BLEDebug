@@ -2,59 +2,82 @@ package com.jsyoon.testbt5.data;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.ObservableByte;
+import android.databinding.ObservableField;
+import android.databinding.ObservableFloat;
+import android.databinding.ObservableInt;
 
 import com.jsyoon.testbt5.Const;
 
 public class Rxdata extends BaseObservable {
-    public byte LeadOff;
-    public String OpMode;
-    public byte OpModebyte;
-    public byte Batt;
-    public byte Temp;
-    public byte ABL;
-    public byte EDA;
-    public byte MIC;
-    public int PPG;
-    public int SpO2;
-    private float EEG_A;
-    private float EEG_B;
-    private float EEG_D;
-    private float EEG_T;
-    public int ACC_X;
-    public int ACC_Y;
-    public int ACC_Z;
+    public ObservableByte LeadOff = new ObservableByte();
+    public ObservableField<String> OpMode = new ObservableField<>();
+    public ObservableByte OpModebyte = new ObservableByte();
+    public ObservableByte Batt = new ObservableByte();
+    public ObservableByte Temp = new ObservableByte();
+    public ObservableByte ABL = new ObservableByte();
+    public ObservableByte EDA = new ObservableByte();
+    public ObservableByte MIC = new ObservableByte();
+    public ObservableInt PPG = new ObservableInt();
+    public ObservableInt SpO2 = new ObservableInt();
+    private ObservableFloat EEG_A = new ObservableFloat();
+    private ObservableFloat EEG_B = new ObservableFloat();
+    private ObservableFloat EEG_D = new ObservableFloat();
+    private ObservableFloat EEG_T = new ObservableFloat();
+    public ObservableInt ACC_X = new ObservableInt();
+    public ObservableInt ACC_Y = new ObservableInt();
+    public ObservableInt ACC_Z = new ObservableInt();
 
     public void setOpMode(byte mode) {
-        this.OpModebyte = mode;
-        switch(mode){
-            case Const.Idlemode: OpMode = "대기모드";break;
-            case Const.Standbymode: OpMode = "준비모드";break;
-            case Const.Startmode: OpMode = "시작모드";break;
-            case Const.Demomode: OpMode = "데모모드";break;
-            default:OpMode = "그외모드";break;
+        this.OpModebyte.set(mode);
+        byte data = OpModebyte.get();
+        switch (data) {
+            case Const.Idlemode:
+                OpMode.set("대기모드");
+                break;
+            case Const.Standbymode:
+                OpMode.set("준비모드");
+                break;
+            case Const.Startmode:
+                OpMode.set("시작모드");
+                break;
+            case Const.Demomode:
+                OpMode.set("데모모드");
+                break;
+            default:
+                OpMode.set("그외모드");
+                break;
         }
-        notifyPropertyChanged(com.jsyoon.testbt5.BR.opMode);
     }
 
     @Bindable
     public String getEEG_A() {
-        return Float.toString(EEG_A);
-    }
-    @Bindable
-    public String getEEG_B() {
-        return Float.toString(EEG_B);
-    }
-    @Bindable
-    public String getEEG_D() {
-        return Float.toString(EEG_D);
-    }
-    @Bindable
-    public String getEEG_T() {
-        return Float.toString(EEG_T);
+        Float data = EEG_A.get();
+        return Float.toString(data);
     }
 
     @Bindable
-    public String getOpMode() {
-        return this.OpMode;
+    public String getEEG_B() {
+        Float data = EEG_B.get();
+        return Float.toString(data);
+    }
+
+    @Bindable
+    public String getEEG_D() {
+        Float data = EEG_D.get();
+        return Float.toString(data);
+    }
+
+    @Bindable
+    public String getEEG_T() {
+        Float data = EEG_T.get();
+        return Float.toString(data);
+    }
+
+    public String getHexStringbyte(ObservableByte val) {
+        byte data = val.get();
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%02X ", data));
+        return sb.toString();
     }
 }

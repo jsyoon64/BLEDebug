@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.databinding.DataBindingUtil;
+import android.databinding.Observable;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -114,9 +115,9 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
     public void processBinaryData(byte[] data) {
         Rxdata bdata = binding.getRxdata();
         if ((data[0] == (byte) 0xFF) && (data[1] == (byte) 0xFE)) {
-            bdata.LeadOff = data[3];
+            bdata.LeadOff.set(data[3]);
             bdata.setOpMode(data[4]);
-            bdata.Batt = data[6];
+            bdata.Batt.set(data[6]);
         }
     }
 

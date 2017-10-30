@@ -204,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.getLeadoff}"
+                    android:text=""
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -226,7 +226,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.getOpmodebyte}"
+                    android:text=""
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -417,7 +417,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.eeg_a}"
+                    android:text=""
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -439,7 +439,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.eeg_b}"
+                    android:text=""
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -461,7 +461,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.eeg_d}"
+                    android:text=""
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -483,7 +483,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.eeg_t}"
+                    android:text=""
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
@@ -512,7 +512,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.acc_x}"
+                    android:text=""
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -534,7 +534,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.acc_y}"
+                    android:text=""
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -556,7 +556,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.acc_z}"
+                    android:text=""
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>

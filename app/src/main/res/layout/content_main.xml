@@ -219,14 +219,14 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
                     android:text="동작모드"
-                    android:textSize="16sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/working_mode_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="@{rxdata.opmodebyte}"
+                    android:text="@{rxdata.opmode}"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -248,7 +248,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.batt}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -270,7 +270,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.temp}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -292,7 +292,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.abl}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -322,7 +322,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.eda}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -344,7 +344,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.mic}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -366,7 +366,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.ppg}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -388,7 +388,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.spo2}"
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
@@ -417,7 +417,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.eeg_a}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -439,7 +439,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.eeg_b}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -461,7 +461,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.eeg_d}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -483,7 +483,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.eeg_t}"
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
@@ -512,7 +512,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.acc_x}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -534,7 +534,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.acc_y}"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -556,7 +556,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=""
+                    android:text="@{rxdata.acc_z}"
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>

@@ -11,27 +11,27 @@ import com.jsyoon.testbt5.Const;
 import com.jsyoon.testbt5.BR;
 
 public class rxdata extends BaseObservable {
-/*
-    public ObservableByte LeadOff = new ObservableByte();
-    public ObservableField<String> OpMode = new ObservableField<>();
-    public ObservableByte OpModebyte = new ObservableByte();
-    public ObservableByte Batt = new ObservableByte();
-    public ObservableByte Temp = new ObservableByte();
-    public ObservableByte ABL = new ObservableByte();
-    public ObservableByte EDA = new ObservableByte();
-    public ObservableByte MIC = new ObservableByte();
-    public ObservableInt PPG = new ObservableInt();
-    public ObservableInt SpO2 = new ObservableInt();
-    private ObservableFloat EEG_A = new ObservableFloat();
-    private ObservableFloat EEG_B = new ObservableFloat();
-    private ObservableFloat EEG_D = new ObservableFloat();
-    private ObservableFloat EEG_T = new ObservableFloat();
-    public ObservableInt ACC_X = new ObservableInt();
-    public ObservableInt ACC_Y = new ObservableInt();
-    public ObservableInt ACC_Z = new ObservableInt();
-*/
+    /*
+        public ObservableByte LeadOff = new ObservableByte();
+        public ObservableField<String> OpMode = new ObservableField<>();
+        public ObservableByte OpModebyte = new ObservableByte();
+        public ObservableByte Batt = new ObservableByte();
+        public ObservableByte Temp = new ObservableByte();
+        public ObservableByte ABL = new ObservableByte();
+        public ObservableByte EDA = new ObservableByte();
+        public ObservableByte MIC = new ObservableByte();
+        public ObservableInt PPG = new ObservableInt();
+        public ObservableInt SpO2 = new ObservableInt();
+        private ObservableFloat EEG_A = new ObservableFloat();
+        private ObservableFloat EEG_B = new ObservableFloat();
+        private ObservableFloat EEG_D = new ObservableFloat();
+        private ObservableFloat EEG_T = new ObservableFloat();
+        public ObservableInt ACC_X = new ObservableInt();
+        public ObservableInt ACC_Y = new ObservableInt();
+        public ObservableInt ACC_Z = new ObservableInt();
+    */
     private byte leadoff;
-    private byte opmodebyte;
+    private byte opmodebyte = 0;
     private String opmode;
     private byte batt;
     private byte temp;
@@ -54,6 +54,7 @@ public class rxdata extends BaseObservable {
         sb.append(String.format("%02X ", leadoff));
         return sb.toString();
     }
+
     public void setLeadoff(byte val) {
         leadoff = val;
         notifyPropertyChanged(BR.leadoff);
@@ -65,6 +66,7 @@ public class rxdata extends BaseObservable {
         sb.append(String.format("%02X ", opmodebyte));
         return sb.toString();
     }
+
     public void setOpmodebyte(byte val) {
         opmodebyte = val;
         notifyPropertyChanged(BR.opmodebyte);
@@ -73,8 +75,9 @@ public class rxdata extends BaseObservable {
 
     @Bindable
     public String getOpmode() {
-        return opmode.toString();
+        return opmode == null ? "" : opmode.toString();
     }
+
     public void setOpmode(String val) {
         opmode = val;
         notifyPropertyChanged(BR.opmode);
@@ -86,6 +89,7 @@ public class rxdata extends BaseObservable {
         sb.append(String.format("%02X ", temp));
         return sb.toString();
     }
+
     public void setTemp(byte val) {
         temp = val;
         notifyPropertyChanged(BR.temp);
@@ -97,6 +101,7 @@ public class rxdata extends BaseObservable {
         sb.append(String.format("%02X ", batt));
         return sb.toString();
     }
+
     public void setBatt(byte val) {
         batt = val;
         notifyPropertyChanged(BR.batt);
@@ -108,6 +113,7 @@ public class rxdata extends BaseObservable {
         sb.append(String.format("%02X ", abl));
         return sb.toString();
     }
+
     public void setAbl(byte val) {
         abl = val;
         notifyPropertyChanged(BR.abl);
@@ -119,6 +125,7 @@ public class rxdata extends BaseObservable {
         sb.append(String.format("%02X ", eda));
         return sb.toString();
     }
+
     public void setEda(byte val) {
         eda = val;
         notifyPropertyChanged(BR.eda);
@@ -130,6 +137,7 @@ public class rxdata extends BaseObservable {
         sb.append(String.format("%02X ", mic));
         return sb.toString();
     }
+
     public void setMic(byte val) {
         mic = val;
         notifyPropertyChanged(BR.mic);
@@ -139,6 +147,7 @@ public class rxdata extends BaseObservable {
     public String getPpg() {
         return String.valueOf(ppg);
     }
+
     public void setPpg(int val) {
         ppg = val;
         notifyPropertyChanged(BR.ppg);
@@ -148,6 +157,7 @@ public class rxdata extends BaseObservable {
     public String getSpo2() {
         return String.valueOf(spo2);
     }
+
     public void setSpo2(int val) {
         spo2 = val;
         notifyPropertyChanged(BR.spo2);
@@ -157,6 +167,7 @@ public class rxdata extends BaseObservable {
     public String getEeg_a() {
         return Float.toString(eeg_a);
     }
+
     public void setEeg_a(float val) {
         eeg_a = val;
         notifyPropertyChanged(BR.eeg_a);
@@ -166,6 +177,7 @@ public class rxdata extends BaseObservable {
     public String getEeg_b() {
         return Float.toString(eeg_b);
     }
+
     public void setEeg_b(float val) {
         eeg_b = val;
         notifyPropertyChanged(BR.eeg_b);
@@ -175,6 +187,7 @@ public class rxdata extends BaseObservable {
     public String getEeg_d() {
         return Float.toString(eeg_d);
     }
+
     public void setEeg_d(float val) {
         eeg_d = val;
         notifyPropertyChanged(BR.eeg_d);
@@ -184,6 +197,7 @@ public class rxdata extends BaseObservable {
     public String getEeg_t() {
         return Float.toString(eeg_t);
     }
+
     public void setEeg_t(float val) {
         eeg_t = val;
         notifyPropertyChanged(BR.eeg_t);
@@ -193,6 +207,7 @@ public class rxdata extends BaseObservable {
     public String getAcc_x() {
         return String.valueOf(acc_x);
     }
+
     public void setAcc_x(int val) {
         acc_x = val;
         notifyPropertyChanged(BR.acc_x);
@@ -202,6 +217,7 @@ public class rxdata extends BaseObservable {
     public String getAcc_y() {
         return String.valueOf(acc_y);
     }
+
     public void setAcc_y(int val) {
         acc_y = val;
         notifyPropertyChanged(BR.acc_y);
@@ -211,6 +227,7 @@ public class rxdata extends BaseObservable {
     public String getAcc_z() {
         return String.valueOf(acc_z);
     }
+
     public void setAcc_z(int val) {
         acc_z = val;
         notifyPropertyChanged(BR.acc_z);

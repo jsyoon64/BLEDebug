@@ -143,6 +143,7 @@ public class BLEControl{
     }
 
     public void stopService() {
+        mBluetoothLeService.disconnect();
         mBluetoothLeService = null;
     }
 }

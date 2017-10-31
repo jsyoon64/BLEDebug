@@ -39,10 +39,6 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
     private String mDeviceAddress;
     BLEControl bleControl;
 
-    private TextView mDeviceAddressText;
-    private TextView mConnectionState;
-    private TextView mDataField;
-
     private ToggleButton RtogB, GtogB, BtogB, MtogB;
 
     private Button mode_run;
@@ -59,10 +55,6 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        mDeviceAddressText = (TextView) findViewById(R.id.device_address);
-        mDataField = (TextView) findViewById(R.id.data_value);
-        mConnectionState = (TextView) findViewById(R.id.connection_state);
 
         initialToggleButton();
 
@@ -101,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
             mDeviceName = data.getStringExtra(Const.EXTRAS_DEVICE_NAME);
             mDeviceAddress = data.getStringExtra(Const.EXTRAS_DEVICE_ADDRESS);
 
-            mDeviceAddressText.setText(mDeviceAddress);
+            binding.contents.deviceAddress.setText(mDeviceAddress);
 
             bleControl = new BLEControl(this, mDeviceName, mDeviceAddress);
 
@@ -161,13 +153,13 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
     @Override
     public void displayData(String data) {
         if (data != null) {
-            mDataField.setText(data);
+            binding.contents.dataValue.setText(data);
         }
     }
 
     @Override
     public void connectionState(final int resourceId) {
-        mConnectionState.setText(resourceId);
+        binding.contents.connectionState.setText(resourceId);
     }
 
     private void initialToggleButton() {

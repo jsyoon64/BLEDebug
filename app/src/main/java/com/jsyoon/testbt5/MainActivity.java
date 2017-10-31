@@ -29,6 +29,7 @@ import com.jsyoon.testbt5.BlueTooth.DataInterface;
 import com.jsyoon.testbt5.BlueTooth.DeviceScanActivity;
 import com.jsyoon.testbt5.data.rxdata;
 import com.jsyoon.testbt5.databinding.ActivityMainBinding;
+import com.jsyoon.testbt5.utils.utils;
 
 
 public class MainActivity extends AppCompatActivity implements DataInterface {
@@ -114,33 +115,45 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
     }
 
     @Override
-    public void processBinaryData(byte[] data) {
+    protected void onDestroy() {
+        super.onDestroy();
+        if (bleControl != null) {
+            if (bleControl.mServiceConnection != null) {
+                unbindService(bleControl.mServiceConnection);
+            }
+            bleControl.stopService();
+        }
+    }
 
+
+    @Override
+    public void processBinaryData(byte[] data) {
         if ((data != null) && (data.length >= 30)) {
             if ((data[0] == (byte) 0xFF) && (data[1] == (byte) 0xFE)) {
                 rd.setLeadoff(data[3]);
                 rd.setOpmodebyte(data[4]);
-                rd.setBatt(data[6]);
-                rd.setTemp(data[7]);
-                rd.setAbl(data[8]);
-                rd.setEda(data[9]);
-                rd.setMic(data[12]);
-                rd.setPpg((int)data[13]);
-                rd.setSpo2((int)data[15]);
+
+                rd.setBatt(utils.byteToUnsignedInt(data[6]));
+                rd.setTemp(utils.byteToUnsignedInt(data[7]));
+                rd.setAbl(utils.byteToUnsignedInt(data[8]));
+                rd.setEda(utils.byteToUnsignedInt(data[9]));
+                rd.setMic(utils.byteToUnsignedInt(data[12]));
+                rd.setPpg(utils.byteToUnsignedInt(data[13]));
+                rd.setSpo2(utils.byteToUnsignedInt(data[15]));
 
                 float val;
-                val = (float)((int)data[15] << 8 | data[16]);
+                val = (float) ((int) data[15] << 8 | data[16]);
                 rd.setEeg_d(val);
-                val = (float)((int)data[17] << 8 | data[18]);
+                val = (float) ((int) data[17] << 8 | data[18]);
                 rd.setEeg_t(val);
-                val = (float)((int)data[19] << 8 | data[20]);
+                val = (float) ((int) data[19] << 8 | data[20]);
                 rd.setEeg_a(val);
-                val = (float)((int)data[21] << 8 | data[22]);
+                val = (float) ((int) data[21] << 8 | data[22]);
                 rd.setEeg_b(val);
 
-                rd.setAcc_x((int)data[23]);
-                rd.setAcc_y((int)data[24]);
-                rd.setAcc_z((int)data[25]);
+                rd.setAcc_x((int) data[23]);
+                rd.setAcc_y((int) data[24]);
+                rd.setAcc_z((int) data[25]);
             }
         }
     }

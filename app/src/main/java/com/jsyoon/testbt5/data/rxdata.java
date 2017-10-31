@@ -33,11 +33,11 @@ public class rxdata extends BaseObservable {
     private byte leadoff;
     private byte opmodebyte = 0;
     private String opmode;
-    private byte batt;
-    private byte temp;
-    private byte abl;
-    private byte eda;
-    private byte mic;
+    private int batt;
+    private int temp;
+    private int abl;
+    private int eda;
+    private int mic;
     private int ppg;
     private int spo2;
     private float eeg_a;
@@ -85,60 +85,50 @@ public class rxdata extends BaseObservable {
 
     @Bindable
     public String getTemp() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%02X ", temp));
-        return sb.toString();
+        return String.valueOf(temp);
     }
 
-    public void setTemp(byte val) {
+    public void setTemp(int val) {
         temp = val;
         notifyPropertyChanged(BR.temp);
     }
 
     @Bindable
     public String getBatt() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%02X ", batt));
-        return sb.toString();
+        return String.valueOf(batt);
     }
 
-    public void setBatt(byte val) {
+    public void setBatt(int val) {
         batt = val;
         notifyPropertyChanged(BR.batt);
     }
 
     @Bindable
     public String getAbl() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%02X ", abl));
-        return sb.toString();
+        return String.valueOf(abl);
     }
 
-    public void setAbl(byte val) {
+    public void setAbl(int val) {
         abl = val;
         notifyPropertyChanged(BR.abl);
     }
 
     @Bindable
     public String getEda() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%02X ", eda));
-        return sb.toString();
+        return String.valueOf(eda);
     }
 
-    public void setEda(byte val) {
+    public void setEda(int val) {
         eda = val;
         notifyPropertyChanged(BR.eda);
     }
 
     @Bindable
     public String getMic() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%02X ", mic));
-        return sb.toString();
+        return String.valueOf(mic);
     }
 
-    public void setMic(byte val) {
+    public void setMic(int val) {
         mic = val;
         notifyPropertyChanged(BR.mic);
     }

@@ -141,4 +141,8 @@ public class BLEControl{
             //characteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE);
         }
     }
+
+    public void stopService() {
+        mBluetoothLeService = null;
+    }
 }

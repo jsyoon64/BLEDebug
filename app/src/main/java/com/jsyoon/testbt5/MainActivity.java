@@ -242,6 +242,12 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
                 if ("대기모드".equals(String.valueOf(mode_spinner.getSelectedItem()))) {
                     value[Const.DataField] = Const.Idlemode;
                     if (bleControl != null) bleControl.writeData(value);
+                } else if ("준비모드".equals(String.valueOf(mode_spinner.getSelectedItem()))) {
+                    value[Const.DataField] = Const.Standbymode;
+                    if (bleControl != null) bleControl.writeData(value);
+                } else if ("시작모드".equals(String.valueOf(mode_spinner.getSelectedItem()))) {
+                    value[Const.DataField] = Const.Startmode;
+                    if (bleControl != null) bleControl.writeData(value);
                 } else if ("데모모드".equals(String.valueOf(mode_spinner.getSelectedItem()))) {
                     value[Const.DataField] = Const.Demomode;
                     if (bleControl != null) bleControl.writeData(value);

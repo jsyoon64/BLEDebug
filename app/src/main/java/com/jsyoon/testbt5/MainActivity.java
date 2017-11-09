@@ -134,18 +134,24 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
                 rd.setSpo2(utils.byteToUnsignedInt(data[15]));
 
                 float val;
-                val = (float) ((int) data[15] << 8 | data[16]);
+                val = (float) ((int) (data[15] << 8) | (int)(data[16] & 0xFF));
                 rd.setEeg_d(val);
-                val = (float) ((int) data[17] << 8 | data[18]);
+                val = (float) ((int) (data[17] << 8) | (int)(data[18] & 0xFF));
                 rd.setEeg_t(val);
-                val = (float) ((int) data[19] << 8 | data[20]);
+                val = (float) ((int) (data[19] << 8) | (int)(data[20] & 0xFF));
                 rd.setEeg_a(val);
-                val = (float) ((int) data[21] << 8 | data[22]);
+                val = (float) ((int) (data[21] << 8) | (int)(data[22] & 0xFF));
                 rd.setEeg_b(val);
 
-                rd.setAcc_x((int) data[23]);
-                rd.setAcc_y((int) data[24]);
-                rd.setAcc_z((int) data[25]);
+                int val1;
+                val1 = (int)((int) (data[24] << 8) | (int)(data[23] & 0xFF) );
+                rd.setAcc_x(val1);
+
+                val1 = (int)((int) (data[26] << 8) | (int)(data[25] & 0xFF));
+                rd.setAcc_y(val1);
+
+                val1 = (int)((int) (data[28] << 8) | (int)(data[27] & 0xFF));
+                rd.setAcc_z(val1);
             }
         }
     }

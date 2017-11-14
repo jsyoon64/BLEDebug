@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements DataInterface {
                 rd.setEda(utils.byteToUnsignedInt(data[9]));
                 rd.setMic(utils.byteToUnsignedInt(data[12]));
                 rd.setPpg(utils.byteToUnsignedInt(data[13]));
-                rd.setSpo2(utils.byteToUnsignedInt(data[15]));
+                rd.setSpo2(utils.byteToUnsignedInt(data[14]));
 
                 float val;
                 val = (float) ((int) (data[15] << 8) | (int)(data[16] & 0xFF));

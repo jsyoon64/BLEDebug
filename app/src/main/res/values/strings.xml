@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">testbt5</string>
+    <string name="app_name">SleepSense Debug tool</string>
     <string name="action_settings">Settings</string>
 
     <!-- Device Control Activity string -->
@@ -25,5 +25,5 @@
 
     <string name="no_bt_support">Your device doesn\'t support bluetooth.</string>
     <string name="empty_device_name">&lt;New device&gt;</string>
-    <string name="title_activity_device_scan">DeviceScanActivity</string>
+    <string name="title_activity_device_scan">Scanning Result</string>
 </resources>
